@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Login</h1>
+        <nav>
+            <a href="index.html">Início</a>
+            <a href="cart.html">Carrinho</a>
+            <a href="login.html">Login</a>
+            <a href="register.html">Registrar</a>
+        </nav>
+    </header>
+
+    <section class="login-form">
+        <h3>Faça seu login</h3>
+        <input type="text" id="username" placeholder="Usuário" />
+        <input type="password" id="password" placeholder="Senha" />
+        <button onclick="login()">Entrar</button>
+    </section>
+
+    <script>
+        function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            if (username && password) {
+                alert('Login bem-sucedido!');
+                // Redirecionar para a página do carrinho ou página inicial
+                window.location = 'cart.html'; // Pode ser ajustado conforme a necessidade
+            } else {
+                alert('Por favor, preencha todos os campos!');
+            }
+        }
+    </script>
+</body>
+</html>

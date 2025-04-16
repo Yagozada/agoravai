@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho de Compras</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Carrinho de Compras</h1>
+        <nav>
+            <a href="index.html">Início</a>
+            <a href="cart.html">Carrinho</a>
+            <a href="login.html">Login</a>
+            <a href="register.html">Registrar</a>
+        </nav>
+    </header>
+
+    <section id="cart-items">
+        <!-- Os itens do carrinho serão inseridos aqui -->
+    </section>
+
+    <section class="total">
+        <p>Total: R$ <span id="total">0.00</span></p>
+        <button onclick="checkout()">Finalizar Compra</button>
+    </section>
+
+    <script>
+        function updateCart() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartItems = document.getElementById('cart-items');
+            const totalSpan = document.getElementById('total');
+            cartItems.innerHTML = '';
+            let total = 0;
+            cart.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = `${item.name} - R$ ${item.price.toFixed(2)}`;
+                cartItems.appendChild(li);
+                total += item.price;
+            });
+            totalSpan.textContent = total.toFixed(2);
+        }
+
+        function checkout() {
+            if (confirm('Deseja finalizar a compra?')) {
+                localStorage.removeItem('cart');
+                alert('Compra finalizada!');
+                updateCart();
+            }
+        }
+
+        updateCart();
+    </script>
+</body>
+</html>
